@@ -1,0 +1,7 @@
+gnu/linux
+php 5.4
+libmemcached 1.0.4
+memcached 1.4.13
+memcached extension 2.0.0-dev
+apache httpd 2.4
+mysql 5.1.57

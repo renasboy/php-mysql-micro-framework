@@ -1,0 +1,5 @@
+- TODO
+
+- implement generic filters methods in the view_helper
+- Get api.localhost from conf in the api http client
+- Implement the lib/container in the lib/app

@@ -1,0 +1,24 @@
+This is the LIB file.
+This document describe the libraries included.
+
+I have tried to compile a concise list of essential libraries every api will need.
+Everything else should be done while implementing specific api.
+
+List of files in lib dir is:
+
+
+api_client.class.php            - api client class, communicates to api including it and calling methods on it (depends on api)
+api_http_client.class.php       - api http client class, communicates to api via http does not depend on api code
+app.class.php                   - main APP bootstrap and dependency injector
+conf.class.php                  - configuration class, gets values from configuration (depends on core)
+controller.class.php            - controller class, describes the flow that every controller follow
+error.class.php                 - error class, throw exceptions based on http error codes (depends on core)
+logger.class.php                - logger class, logs message for debug or error to files (depends on core) 
+mailer.class.php                - mailer class, is a really simple hardocded wrapper around mail function that send attachments
+memcache.class.php              - memcache class, is a really simple wrapper around pecl::memcached
+request.class.php               - request class, identify controllers, request parameters, methods, referer etc.. (depends on core) 
+session.class.php               - session class, manages sessions 
+simple_controller.class.php     - simple controller class, defines helper methods used by controllers 
+validator.class.php             - validator class, validates application data (depends on core)
+view.class.php                  - view class, manages the hierarchy of views, gets and sets vars in the views 
+view_helper.class.php           - view helper class contains methods to help building views and templates

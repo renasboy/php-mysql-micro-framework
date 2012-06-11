@@ -1,0 +1,14 @@
+This is the ABOUT file.
+This file describes this project.
+
+This project is an attempt to craete a simple framework in php/mysql.
+
+It is possible to use this project to create an web application  with
+relatively little development time.
+
+The steps to create the first APP would be:
+
+1. Create an API first
+2. Create controllers, views and templates
+3. Add created controllers to configuration
+4. Use and tweak the application

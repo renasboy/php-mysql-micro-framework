@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# INTERNET EXPLORER
+RewriteCond %{HTTP_USER_AGENT} ^.*MSIE\ [567].*$
+RewriteCond %{IS_SUBREQ} !false
+RewriteRule ^.*$ /unsupported [R=302,L]
+
+# NON DOMAINS
+#RewriteCond %{SERVER_NAME} !^localhost$
+#RewriteRule ^(.*)$ http://localhost/$1? [R=301,L]
+
+# TRAILING SLASH
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+# SYSTEM RULES
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ /index.php [L]

@@ -1,0 +1,65 @@
+This is the INSTALL file.
+For explanation of each step see bellow.
+
+* Quick installation:
+
+git clone git://repohost/core
+git clone git://repohost/api
+cd api
+ln -sf api.dev.ini etc/api.ini
+./bin/make
+vim etc/api.dev.ini
+cd ..
+git clone git://repohost/app
+cd app
+ln -sf app.dev.ini etc/app.ini
+./bin/make
+vim etc/app.dev.ini
+
+--
+
+* Installation steps are:
+
+1. clone the core repo (dependency)
+
+    $ git clone git://repohost/core
+
+2. clone the api repo (dependency)
+
+    $ git clone git://repohost/api
+
+3. update the configuration file etc/api.dev.ini
+
+    $ cd api
+    $ vim etc/api.dev.ini
+
+4. make the link to the configuration file in use
+
+    $ cd api
+    $ ln -sf api.dev.ini etc/api.ini
+
+5. execute bin/make in the api
+    
+    $ cd api
+    $ ./bin/make
+
+6. clone the app repo
+
+    $ git clone git://repohost/app
+
+7. update the configuration file etc/app.dev.ini
+
+    $ cd app
+    $ vim etc/app.dev.ini
+
+8. make the link to the configuration file in use
+
+    $ cd app
+    $ ln -sf app.dev.ini etc/app.ini
+
+9. execute bin/make in the app
+    
+    $ cd app
+    $ ./bin/make
+
+10. you are done !!

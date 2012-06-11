@@ -1,0 +1,41 @@
+This is the HOWTO file.
+This file describes how to create an application using the framework.
+
+Before we start creating files, let's understand the contents of it.
+
+- Controllers
+    Controllers are created by defining the dependency and default input, then
+    implementing the validate and execute methods.
+    The dependency is the list of objects in the library to be used.
+    The default input are the possible request parameters and default values.
+    The validate method validates the request with the help of validator.
+    The execute method uses the api client and dependency for isolated actions.
+    Controller files are stored under usr/app/controller/
+
+- Views
+    Views are created by defining the main templates, the sub templates, the
+    css and js used and finaly the execute method.
+    The main template is the first to be loaded and then it calls the hierarchy.
+    The sub templates are part of the hierarchy of the main template.
+    The css and js are the list of css files and js files used for this view.
+    The execute method uses the api client to get data to compose the view.
+    View files are stored under usr/app/view/
+    
+- Templates
+    Templates are created by the HTML (and optional code).
+    Templates are free to be created without any special format, they can
+    add subtemplates to it and all variables set to the view are avilable
+    within the template. Templates can use the helper (view_helper) to create
+    easy way to re-use template blocks.
+    Tamplate files are stored under usr/app/template
+
+- Assets
+    Assets can be added to the pub/ directory as css, js and images.
+
+- Request Configuration
+    The request configuration is composed by multiple entries one per controller.
+    The entries are grouped by the ini sections.
+    The request can only be accessed after adding it to the configuration file
+    until then it will return 404.
+    Request configuration is stored under etc/request.ini file and this location 
+    can be changed in the etc/api.ini file.
