@@ -3,14 +3,14 @@ For explanation of each step see bellow.
 
 * Quick installation:
 
-git clone git://repohost/core
-git clone git://repohost/api
+git clone https://github.com/renasboy/php-mysql-micro-framework-core core
+git clone https://github.com/renasboy/php-mysql-micro-framework-api api
 cd api
 ln -sf api.dev.ini etc/api.ini
 ./bin/make
 vim etc/api.dev.ini
 cd ..
-git clone git://repohost/app
+git clone https://github.com/renasboy/php-mysql-micro-framework-app app
 cd app
 ln -sf app.dev.ini etc/app.ini
 ./bin/make
@@ -22,11 +22,11 @@ vim etc/app.dev.ini
 
 1. clone the core repo (dependency)
 
-    $ git clone git://repohost/core
+    $ git clone https://github.com/renasboy/php-mysql-micro-framework-core core
 
 2. clone the api repo (dependency)
 
-    $ git clone git://repohost/api
+    $ git clone https://github.com/renasboy/php-mysql-micro-framework-api api
 
 3. update the configuration file etc/api.dev.ini
 
@@ -45,7 +45,7 @@ vim etc/app.dev.ini
 
 6. clone the app repo
 
-    $ git clone git://repohost/app
+    $ git clone https://github.com/renasboy/php-mysql-micro-framework-app app
 
 7. update the configuration file etc/app.dev.ini
 
