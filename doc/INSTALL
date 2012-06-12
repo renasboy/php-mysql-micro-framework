@@ -10,7 +10,7 @@ ln -sf api.dev.ini etc/api.ini
 ./bin/make
 vim etc/api.dev.ini
 cd ..
-git clone https://github.com/renasboy/php-mysql-micro-framework-app app
+git clone https://github.com/renasboy/php-mysql-micro-framework app
 cd app
 ln -sf app.dev.ini etc/app.ini
 ./bin/make
@@ -45,7 +45,7 @@ vim etc/app.dev.ini
 
 6. clone the app repo
 
-    $ git clone https://github.com/renasboy/php-mysql-micro-framework-app app
+    $ git clone https://github.com/renasboy/php-mysql-micro-framework app
 
 7. update the configuration file etc/app.dev.ini
 
