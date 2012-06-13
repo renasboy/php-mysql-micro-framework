@@ -1,0 +1,186 @@
+This is the FEATURES file.
+This file contains the list of features in this project.
+
+This is a micro framework to create a simple application using the api created
+by the api micro framework. It is possible to create an web application as well
+as an CLI application and of course a mix of them like aphp  web application with
+php cronjobs and php helper scripts.
+
+It is possible to create controllers to handle actions, that can have views in a
+tree structure which maps to a template.
+
+The features are basicaly the classes in the libraries and how they can be used.
+
+- Configuration (depends on core)
+
+The conf class is used to read ini format configuration files. It is simple as
+provide the configuration file and then get values from it.
+
+Eg.:
+
+$conf       = new \app\conf(APP_CONF_FILE);
+$log_file   = $conf->get('log_file'); 
+
+- Logging (depends on core)
+
+The logger class is used to write message to log files. It is simple as provide
+the name of the log directory and the verbosity level and then send debug or
+error messages. Error messages are sent to error.log and debug messages are sent
+to debug.log.
+
+Eg.:
+
+$logger     = new \app\logger(APP_LOG_DIR, LOG_DEBUG);
+$logger->error('This is an error message');
+$logger->debug('This is a debug message');
+
+- Error handling (depends on core)
+
+The error class is used to return http errors. It is simple as provide error
+reporting level and an instance of the logger and then call methods with http
+errors names passing a specific error message, all error messages are logged
+using the logger provided.
+
+Eg.:
+
+$error      = new \app\error(E_ALL, $logger);
+$error->not_found('This page was not found');
+$error->bad_request('This was a bad request');
+
+- Validation (depends on core)
+
+The validator class is used to validate model data types. Is is simple as
+call lots of validations and then checking for error at the end.
+
+Eg.:
+
+$validator      = new \app\validator();
+$validator->validate('is_equal', $var1, $var2);
+$validator->validate('is_date', '2012-06-13');
+$error          = $validator->error();
+
+- Request handling and passing parameters (depends on core)
+
+The request class is used to handle request method and get request parameters.
+It is simple as provide the _REQUEST and _SERVER php global variables as well
+as an instance of the conf and error objects, where the conf uses the request
+configuration. Then call the public methods provided.
+
+Eg.:
+
+$request        = new \app\request($_REQUEST, $_SERVER, $conf, $error);
+$resource       = $request->resource();
+$method         = $request->method();
+$variable       = $request->get('parameter');
+
+- Access the API
+
+The api_client (and api_http_client) is used to communicate with the api created
+using the api micro framework, it is simple as call method on it. This api_client
+is used frequently in the controllers and views to access data from api.
+
+Eg.:
+
+$api_client     = new \app\api_client();
+$objects        = $api_client->get('/resource', $options);
+$result         = $api_client->save('/resource/1', $options);
+
+- Caching API results
+
+The memcache class is used to cache any data structure and specially used to
+store api results after using the api_client. It is simple as provide the port
+to connect and then call set, get and flush methods.
+
+Eg.:
+
+$memcache       = new \app\memcache(MEMCACHE_PORT);
+$memcache->set('mycache', $var);
+$var            = $memcache->get('mycache');
+$memcache->flush();
+
+- Session Handling
+
+The session class is used to manage the _SESSION php global variable. It is
+simple as provide the name, host and lifetime parameters and call the set, get
+and del methods on it.
+
+Eg.:
+
+$session        = new \app\session(SESSION_NAME, HOST, LIFETIME);
+$session->set('mysession', $variable);
+$variable       = $session->get('mysession');
+$session->del('mysession');
+
+- View hierarchy and templates
+
+The view class is used to store template data, manage and render templates. The
+view is usually extended and the parent class is used instead. It is simple as 
+provide an instance of the helper, cache, api_client, logger, error and conf 
+objects and then call methods on it. The view set method is frequently used 
+by the controllers and views to add data to the templating engine. The parent
+view defines the validate and execute methods that will be called during the 
+default controller flow for the top view of the controller.
+
+Eg.:
+
+$view       = new \app\view($helper, $memcache, $api_Client, logger, error, conf);
+$view->set('myvar', $var1);
+
+- Re-usable template blocks
+
+The view_helper class is used to create template blocks, this is fragments of
+template that are to small to be stored in single files, here the good sense is
+used while creating the template structure. It is simple as provide an instance
+of the conf object  and then call the user defined methods on it.
+
+Eg.:
+
+$view_helper        = new \app\view_helper($conf);
+print $view_helper->my_html_box();
+
+- Controlling actions
+
+The controller class is used to control the flow that all the controllers will
+follow. The controller is usually extended and the parent class is used instead.
+It is simple as provide an instance of the request, session, validator,
+api_client, view, conf, logger and error objects (ufs..) and then call dispatch
+on it. The parent controller defines the validate and execute methods that will
+be called during the default flow.
+
+Eg.:
+
+$controller = new \app\controller ($request, $session, $validator, $api_client,
+                                   $view, conf, logger, error);
+$controller->dispatch();
+
+- Sending mail with attachment
+
+The mailer class is used to send mail with attachments. It is simple as call 
+send.
+
+Eg.:
+
+$mailer     = new \app\mailer();
+$mailer->send(TO, SUBJECT, BODY, FILE_PATH);
+
+- Basic Structure
+
+The simple_controller is a skeleton of the controller that need to be created.
+It also contain some generic methods that can very well be used by all the 
+parent classes. Usually the controller created will always be parent of this
+simple one.
+
+Eg.:
+
+class my_controller extends \app\simple_controller {}
+
+- APP
+
+Well, this is not really a object to call methods on, it is just the bootstrap
+for the application. The app class is used to initialize all other objects that
+compose the basic application, specific required objects are handled in the form
+of dependencies. It is simple as create an instance.
+
+Eg.:
+
+new \app\app();
