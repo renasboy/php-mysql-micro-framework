@@ -1,7 +1,7 @@
 This is the INSTALL file.
 For explanation of each step see bellow.
 
-* Quick installation:
+* Quickstart:
 
 git clone https://github.com/renasboy/php-mysql-micro-framework-core core
 git clone https://github.com/renasboy/php-mysql-micro-framework-api api
@@ -18,7 +18,7 @@ vim etc/app.dev.ini
 
 --
 
-* Installation steps are:
+* Full installation steps are:
 
 1. clone the core repo (dependency)
 
@@ -64,4 +64,5 @@ vim etc/app.dev.ini
 
 10. you are done !!
 
-    Point your document root to the pub directory
+    Point apache document root to the pub directory and enable .htaccess
+
