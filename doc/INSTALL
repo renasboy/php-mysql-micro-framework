@@ -63,3 +63,5 @@ vim etc/app.dev.ini
     $ ./bin/make
 
 10. you are done !!
+
+    Point your document root to the pub directory
