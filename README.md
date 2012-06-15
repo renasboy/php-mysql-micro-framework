@@ -2,7 +2,7 @@ php-mysql-micro-framework
 =========================
 
 This is the README file.
-For installation see [doc/INSTALL](php-mysql-micro-framework/doc/INSTALL).
+For installation see [doc/INSTALL](php-mysql-micro-framework/master/doc/INSTALL).
 
 All related documents can be found under doc/ directory.
 
