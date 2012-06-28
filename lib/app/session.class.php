@@ -11,9 +11,8 @@ class session {
         ini_set('session.gc_maxlifetime', $lifetime);
         session_name($name);
         session_set_cookie_params($lifetime, '/', $host);
-        // Added session_cache_limiter and the next header in order
-        // for the clipper to work on IE, do not understand why, but
-        // we also had it in the other systems, only on IE
+        // added session_cache_limiter and the next header in order
+        // to work on IE, do not understand why, but
         session_cache_limiter('must-revalidate');
         session_start();
         header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"');
