@@ -16,18 +16,18 @@ eval $(sed -n -e 's/APP_ROOT/$APP_ROOT/g' -e '/=/p' $APP_ROOT/etc/app.ini)
 if test -e "$APP_ROOT/lib/core"; then
 rm -f $APP_ROOT/lib/core
 fi
-ln -sf $PARENT_ROOT/core $APP_ROOT/lib/core
+ln -sf $core_root $APP_ROOT/lib/core
 
 if test -e "$APP_ROOT/lib/api"; then
 rm -f $APP_ROOT/lib/api
 fi
-ln -sf $PARENT_ROOT/api/lib/api $APP_ROOT/lib/api
+ln -sf $api_root/lib/api $APP_ROOT/lib/api
 
 # Link USR for api
 if test -e "$APP_ROOT/usr/api"; then
 rm -f $APP_ROOT/usr/api
 fi
-ln -sf $PARENT_ROOT/api/usr/api $APP_ROOT/usr/api
+ln -sf $api_root/usr/api $APP_ROOT/usr/api
 
 # create LOGS location
 mkdir -p $logger_root

@@ -1,13 +1,19 @@
 <?php
 namespace app;
 
-// define where the api is located
-define('API_ROOT', realpath(dirname(dirname(dirname(__DIR__))) . '/api'));
-define('API_CONF', API_ROOT . '/etc/api.ini');
-
 class api_client {
 
     private $_error     = [];
+
+    public function __construct ($api_root) {
+        // already defined, this might be an exception catch
+        if (defined('API_ROOT')) {
+            return;
+        }
+        // define where the api is located
+        define('API_ROOT', $api_root);
+        define('API_CONF', API_ROOT . '/etc/api.ini');
+    }
 
     public function error () {
         return $this->_error;

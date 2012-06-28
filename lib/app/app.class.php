@@ -93,7 +93,7 @@ class app {
             $this->_error
         );
 
-        $this->_api_client      = new \app\api_client();
+        $this->_api_client      = new \app\api_client($this->_conf->get('api_root'));
 
         $this->_validator       = new \app\validator($this->_api_client);
 
