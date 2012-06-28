@@ -32,11 +32,6 @@ class validator extends \core\validator {
         return isset($value);
     }
 
-    // This is the CDN dir
-    public function is_img_dir ($value) {
-        return in_array($value, ['tmp', 'hello', 'world']);
-    }
-
     // This is the CDN size
     public function is_img_size ($value) {
         return $this->is_number($value) || $value == 'auto';
@@ -115,11 +110,11 @@ class validator extends \core\validator {
         return in_array($value, ['filter', 'form', 'error']);
     }
 
-    public function is_filter ($value) {
+    public function is_filter ($value, $options) {
         $parts = explode(':', $value);
         if (count($parts) == 3) {
             if (in_array($parts[0], ['add', 'del'])) {
-                if (in_array($parts[1], ['hello_world'])) {
+                if (in_array($parts[1], $options)) {
                     return true;
                 }
             }
