@@ -6,15 +6,28 @@ For explanation of each step see bellow.
 git clone https://github.com/renasboy/php-mysql-micro-framework-core core
 git clone https://github.com/renasboy/php-mysql-micro-framework-api api
 cd api
+vim etc/api.dev.ini
+#
+# here change the core_root and db conf 
+# core_root should point to the core repo cloned above
+# db conf is mainly host, user and pass
+#
 ln -sf api.dev.ini etc/api.ini
 ./bin/make
-vim etc/api.dev.ini
+./bin/db
 cd ..
 git clone https://github.com/renasboy/php-mysql-micro-framework app
 cd app
+vim etc/app.dev.ini
+#
+# here change the core_root, api_root and hosts
+# core_root should point to the core repo cloned above
+# api_root should point to the shop-api repo cloned above
+# hosts are used to compose urls and links by the application
+# hosts also contains the cdn hosts for the image server
+#
 ln -sf app.dev.ini etc/app.ini
 ./bin/make
-vim etc/app.dev.ini
 
 --
 
@@ -43,26 +56,30 @@ vim etc/app.dev.ini
     $ cd api
     $ ./bin/make
 
-6. clone the app repo
+7. install the database structure, schema found inside data/ directory.
+
+    $ ./bin/db
+
+8. clone the app repo
 
     $ git clone https://github.com/renasboy/php-mysql-micro-framework app
 
-7. update the configuration file etc/app.dev.ini
+9. update the configuration file etc/app.dev.ini
 
     $ cd app
     $ vim etc/app.dev.ini
 
-8. make the link to the configuration file in use
+10. make the link to the configuration file in use
 
     $ cd app
     $ ln -sf app.dev.ini etc/app.ini
 
-9. execute bin/make in the app
+11. execute bin/make in the app
     
     $ cd app
     $ ./bin/make
 
-10. you are done !!
+12. you are done !!
 
-    Point apache document root to the pub directory and enable .htaccess
+    Point apache document root to the app/pub directory and enable .htaccess
 
