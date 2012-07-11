@@ -5,13 +5,13 @@ class mailer {
 
     public function __construct () {}
 
-    public function send ($to, $subject, $message, $file = null) {
+    public function send ($to, $subject, $message, $from, $file = null) {
 
         $semi_rand = md5(time()); 
         $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
         // TODO read From: from config, somehow
-        $headers    = 'From: Anonymous' . chr(10)
+        $headers    = 'From: ' . $from . chr(10)
         . 'MIME-Version: 1.0' . chr(10)
         . 'Content-Type: multipart/mixed;' . chr(10)
         . ' boundary="' . $mime_boundary . '"';
