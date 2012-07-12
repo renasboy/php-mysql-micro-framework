@@ -77,6 +77,10 @@ class validator extends \core\validator {
         return is_array($value) && array_key_exists('type', $value) && strstr($value['type'], 'text/');
     }
 
+    public function is_not_entity ($entity, $field, $value, $options = []) {
+        return !$this->is_entity($entity, $field, $value, $options);
+    }
+
     public function is_entity ($entity, $field, $value, $options = []) {
         if (!$value) {
             return false;
