@@ -6,6 +6,14 @@ class request extends \core\request {
     private $_controller        = null;
     private $_uri               = null;
 
+    public function language () {
+        if (!array_key_exists('HTTP_ACCEPT_LANGUAGE', $this->_server)) {
+            // default to en-GB
+            $this->_server['HTTP_ACCEPT_LANGUAGE']  = 'en-GB';
+        }
+        return $this->_server['HTTP_ACCEPT_LANGUAGE'];
+    }
+
     public function redirect ($url) {
         if ($url == 'referer') {
             $url = $this->referer();

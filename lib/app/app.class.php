@@ -108,10 +108,18 @@ class app {
 
         $this->_memcache        = new \app\memcache($this->_conf->get('memcache_port'));
 
+        $language               = $this->_request->language();
+        $this->_logger->debug(sprintf(
+            'Language %s' ,
+            $language));
+
+        $this->_language        = new \app\language($language, $this->_conf);
+
         $this->_view            = new $view(
             $this->_view_helper,
             $this->_memcache,
             $this->_api_client,
+            $this->_language,
             $this->_logger,
             $this->_error,
             $this->_conf
@@ -133,6 +141,7 @@ class app {
             $this->_view_helper,
             $this->_memcache,
             $this->_api_client,
+            $this->_language,
             $this->_logger,
             $this->_error,
             $this->_conf
@@ -175,6 +184,7 @@ class app {
                     $this->_view_helper,
                     $this->_memcache,
                     $this->_api_client,
+                    $this->_language,
                     $this->_logger,
                     $this->_error,
                     $this->_conf

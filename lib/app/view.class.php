@@ -9,6 +9,7 @@ class view {
     protected $_error       = null;
     protected $_logger      = null;
     protected $_api_client  = null;
+    protected $_language    = null;
     protected $_helper      = null;
     // TODO, added public cache to be called from controller, fix this
     public    $_cache       = null;
@@ -24,6 +25,7 @@ class view {
         view_helper         $helper,
         memcache            $memcache,
         api_client          $api_client,
+        language            $language,
         logger              $logger,
         error               $error,
         conf                $conf
@@ -31,6 +33,7 @@ class view {
         $this->_helper      = $helper;
         $this->_cache       = $memcache;
         $this->_api_client  = $api_client;
+        $this->_language    = $language;
         $this->_logger      = $logger;
         $this->_error       = $error;
         $this->_conf        = $conf;
@@ -89,10 +92,11 @@ class view {
             foreach ($this->get() as $key => $val) {
                 $$key = $val;
             }
-            // make helper, conf and view itself available
+            // make helper, conf, language, and view itself available
             $helper = $this->_helper;
             $view   = $this;
             $conf   = $this->_conf;
+            $lang   = $this->_language;
             include $view_template;
         }
     }
